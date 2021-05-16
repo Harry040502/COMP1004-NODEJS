@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<HTML lang="en">
+  <head>
+    <title>Restaurant Booking App</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="container form">
+        <div>Enter Resturant Visitor Information Here</div>
+        <form action="/users" method="POST">
+          <div class="entry">
+            <label for="fname">First Name</label>
+            <input type="text" placeholder="First Name" name="fname" />
+          </div>
+          <div class="entry">
+            <label for="lname">Last Name</label>
+            <input type="text" placeholder="Last Name" name="lname" />
+          </div>
+          <div class="entry">
+            <label for="number">Phone Number</label>
+            <input type="text" placeholder="Number" name="number" />
+          </div>
+          <button class="button button-block" type="submit">Send</button>
+        </form>
+      </div>
+    <div class="owner form">
+        <div>Enter Restaurant Information Here</div>
+        <form action="/restaurant" method="POST">
+            <div class=entry>
+                <label for="numberoftables">Number of tables</label>
+                <input type="text" placeholder="Number of Tables" name="numberoftables" />
+            </div>
+            <div class=entry>
+                <label for="numberofseats">Number of seats</label>
+                <input type="text" placeholder="Number of Seats" name="numberofseats" />
+            </div>
+            <div class=entry>
+              <label for="openingtime">Opening Time</label>
+              <input type="text" placeholder="00:00" name="openingtime" />
+            </div>
+            <button class="button button-block" type="submit">Send</button>
+        </form>
+    </div>
+
+    <div class="container">
+      <table>
+          <thead>
+          <tr>
+              <th colspan="4"><div>Bookings</div></th>
+          </tr>
+              <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Phone Number</th>
+                  <th>Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+              <% for(var i = 0; i < users.length; i++) { %>
+              <tr>
+                  <td><%= users[i].fname %></td>
+                  <td><%= users[i].lname %></td>
+                  <td><%= users[i].number %></td>>
+                  <td>
+                      <button
+                          class="button editButton"
+                          data-fname="<%=  users[i].fname %>"
+                          data-lname="<%= users[i].lname %>"
+                          data-number="<%= users[i].number %>"
+                      >
+                          Edit
+                      </button>
+                      <button
+                          class="button deleteButton"
+                          data-fname="<%=  users[i].fname %>"
+                          data-lname="<%= users[i].lname %>"
+                          data-number="<%= users[i].number %>"
+                      >
+                          Delete
+                      </button>
+                  </td>
+              </tr>
+              <% } %>
+          </tbody>
+      </table>
+    </div>
+    <script src="/main.js"></script>
+  </body>
+</HTML>
